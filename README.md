@@ -10,7 +10,7 @@ The tutorial is available for both Python and MATLAB.
 
 To prepare for the tutorial, please ensure that you have (Py)VBMC installed **before the start of the tutorial session**.
 
-### Python
+### Python users
 
 - Install the [PyVBMC package](https://github.com/acerbilab/pyvbmc). You can follow the simple instructions [here](https://acerbilab.github.io/pyvbmc/installation.html).
 - If you use the Anaconda Python distribution, you can use the following instructions to create a minimal working environment with Jupyter notebook:
@@ -21,7 +21,7 @@ conda install --channel=conda-forge pyvbmc
 conda install --channel=conda-forge jupyter
 ```
 
-### MATLAB
+### MATLAB users
 
 - Download and install the [VBMC toolbox](https://github.com/acerbilab/vbmc). You can follow the simple instructions [here](https://github.com/acerbilab/vbmc#installation).
 

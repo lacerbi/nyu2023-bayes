@@ -28,7 +28,7 @@ conda install --channel=conda-forge jupyter
 ### Running the tutorial
 
 - To run the tutorial, download / clone the repository locally. The tutorial is available both as a MATLAB script and as a Python Jupyter notebook.
-- **The current tutorials are work in progress. The finalized tutorials will be uploaded before the start of the session.**
+- **The current tutorials in this repository are still work in progress. The finalized tutorials will be uploaded before the start of the session (and this note will be removed). Please download the finalized version just before the start of the session.**
 
 ![PyVBMC demo](vbmc_animation.gif)
 

@@ -1,4 +1,4 @@
-# Bayesian model fitting made easy with Variational Bayesian Monte Carlo (Py)VBMC
+# Bayesian model fitting made easy with Variational Bayesian Monte Carlo - (Py)VBMC
 
 Tutorial on Bayesian model fitting using the (Py)VBMC package, presented at a workshop at the Center for Neural Science at New York University (January 2023).
 The tutorial is available for both Python and MATLAB.

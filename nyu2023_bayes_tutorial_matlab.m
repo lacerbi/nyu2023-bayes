@@ -5,6 +5,8 @@
 % THIS TUTORIAL IS WORK IN PROGRESS AND SOME PARTS MIGHT CHANGE. PLEASE 
 % DOWNLOAD THE FINAL VERSION JUST BEFORE THE START OF THE TUTORIAL SESSION.
 
+% To run this tutorial, run one section at a time ("Run Section" command).
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % Tutorial on Bayesian inference for model fitting using the VBMC package.
@@ -14,7 +16,7 @@
 
 clear;
 % Add utility folders to MATLAB path
-baseFolder = fileparts(which('nyu203_bayes_tutorial.m'));
+baseFolder = fileparts(which('nyu2023_bayes_tutorial_matlab.m'));
 addpath([baseFolder,filesep(),'utils']);
 
 % During this tutorial, we are going to use data from the International 
@@ -117,7 +119,7 @@ text(-100,0.7,['Log-likelihood: ' num2str(ll)],'FontSize',12);
 % Note that we could fit the model to the data by finding the single "best" 
 % parameter vector that maximizes the log-likelihood, a common technique 
 % known as *maximum-likelihood estimation*. However, we are going to go full 
-% Bayesian.
+% Bayesian!
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% IV. Bayesian inference "by hand"
@@ -203,9 +205,9 @@ ylim([0,0.15]);
 
 close all;
 
-% Similar to the optimization tutorial, we define the "hard" lower and 
-% upper bounds for the parameters. We also define "plausible" bounds which
-% we associate with a higher prior probability of the parameters.
+% We recommend to define "hard" lower and upper bounds for the parameters. 
+% We also define "plausible" bounds which we generally associate with a 
+% higher prior probability of the parameters.
 
 % Define hard parameter bounds
 lb = [-100,1,0,0];
@@ -218,14 +220,14 @@ pub = [25,25,0.40,0.8];
 % Number of variables
 D = numel(lb);
 
-% We need to define a prior for the parameters. This choice is up to you!
-% A common choice is to define the prior separately for each parameter.
-
-% Let's plot the prior for each dimension
 parameter_names{1} = 'bias (\mu)';
 parameter_names{2} = 'threshold (\sigma)';
 parameter_names{3} = 'lapse rate (\lambda)';
 parameter_names{4} = 'lapse bias (\gamma)';
+
+% We need to define a prior for the parameters. This choice is up to you!
+% A common choice is to define the prior separately for each parameter.
+% Below, we plot the prior separtely for each dimension.
 
 % A simple choice is a non-informative uniformly flat prior between the 
 % hard bounds (implemented by `munifboxpdf`).
@@ -281,13 +283,13 @@ set(gcf,'Color','w');
 %% VI. Running Bayesian inference
 
 % Pick session data
-session_num = 12;
+session_num = 14;
 session_data = data(data(:,2) == session_num,:);
 
 % Define the smoothed trapezoidal prior
 prior_fun = @(theta_) msplinetrapezpdf(theta_,lb,plb,pub,ub);
 
-% Alternatively, this implements a uniform prior
+% Alternatively, this implements a box-uniform prior
 % prior_fun = @(theta_) munifboxpdf(theta_,lb,ub);
 
 % Define objective function: log-joint (log likelihood + log prior)
@@ -303,7 +305,7 @@ test = which('bads');
 if ~isempty(test)
     options = bads('defaults');
     options.Display = 'iter';
-    theta_MAP = bads(@(x) -fun(x),theta0,lb,ub,plb,pub,options);
+    theta_MAP = bads(@(x) -fun(x),theta0,lb,ub,plb,pub,[],options);
 else
     % BADS not installed, use fmincon
     options.Display = 'iter';
@@ -328,7 +330,8 @@ options.Plot = 'on';
 
 % VBMC returns:
 % - vp: the (approximate) posterior distribution
-% - elbo: the lower bound to the log marginal likelihood (log evidence)
+% - elbo: the lower bound to the log marginal likelihood (log evidence),
+%   can be used as a principled metric for model comparison (similar to AIC, BIC)
 % - elbo_sd: standard deviation of the estimate of the elbo
 % - exitflag: a success flag
 % - output: a struct with information about the run
@@ -377,3 +380,8 @@ top_pred = quantile(p_right,0.975,1);     % Top 97.5% prediction
 hold on;
 patch([stim,fliplr(stim)],[bottom_pred,fliplr(top_pred)],'k','EdgeColor','none','FaceAlpha',0.2);
 plot(stim,median_pred,'LineWidth',1,'Color','k','DisplayName','model');
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% For further information on VBMC and more advanced example usages, check
+% out the advanced examples and FAQ: https://github.com/acerbilab/vbmc/wiki

@@ -5,6 +5,7 @@ The tutorial is available for both Python and MATLAB.
 
 **Lecturer:** [Luigi Acerbi](https://www.helsinki.fi/en/researchgroups/machine-and-human-intelligence), [@AcerbiLuigi](https://twitter.com/AcerbiLuigi) (University of Helsinki).
 
+#### For more information on our model fitting tools and software, check out [our group GitHub page](https://github.com/acerbilab).
 
 ## Instructions
 
@@ -27,8 +28,8 @@ conda install --channel=conda-forge jupyter
 
 ### Running the tutorial
 
-- To run the tutorial, download / clone this repository locally. The tutorial is available both as a MATLAB script and as a Python Jupyter notebook.
-- **The current tutorials in this repository are still work in progress. The finalized tutorials will be uploaded before the start of the session (and this note will be removed). Please download the finalized version just before the start of the session.**
+- To run the tutorial, download / clone this repository locally. 
+- The tutorial is available both as a [MATLAB script](./nyu2023_bayes_tutorial_matlab.m) and as a [Python Jupyter notebook](./nyu2023_bayes_tutorial_python.ipynb).
 - Tutorial slides will also be uploaded in this repository later.
 
 ![PyVBMC demo](vbmc_animation.gif)

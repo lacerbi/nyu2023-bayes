@@ -2,9 +2,6 @@
 % Tutorial for the Center for Neural Science, NYU - Jan 2023
 % by Luigi Acerbi (2023)
 
-% THIS TUTORIAL IS WORK IN PROGRESS AND SOME PARTS MIGHT CHANGE. PLEASE 
-% DOWNLOAD THE FINAL VERSION JUST BEFORE THE START OF THE TUTORIAL SESSION.
-
 % To run this tutorial, run one section at a time ("Run Section" command).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -385,3 +382,6 @@ plot(stim,median_pred,'LineWidth',1,'Color','k','DisplayName','model');
 
 % For further information on VBMC and more advanced example usages, check
 % out the advanced examples and FAQ: https://github.com/acerbilab/vbmc/wiki
+
+% Check out our group GitHub page for more information on our software:
+% https://github.com/acerbilab
